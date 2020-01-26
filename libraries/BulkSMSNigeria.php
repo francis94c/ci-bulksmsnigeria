@@ -50,7 +50,7 @@ class BulkSMSNigeria
    * @param  [type]     $dnd      [description]
    * @return [type]               [description]
    */
-  function sendSMS($to, string $message, ?string $senderId=null, ?int $dnd=null)
+  function sendSMS($to, string $message, ?string $senderId=null, ?int $dnd=null):bool
   {
     $senderId = $senderId ?? $this->senderId;
     $dnd = $dnd ?? $this->dnd;
@@ -87,5 +87,21 @@ class BulkSMSNigeria
     $response = curl_exec($ch);
     curl_close($ch);
     return json_decode($response)->data->status == 'success';
+  }
+
+  /**
+   * [sendSMSWithViewTemplate description]
+   * @date   2020-01-26
+   * @param  [type]     $to       [description]
+   * @param  string     $view     [description]
+   * @param  [type]     $args     [description]
+   * @param  [type]     $senderId [description]
+   * @param  [type]     $dnd      [description]
+   * @return bool                 [description]
+   */
+  public function sendSMSWithViewTemplate($to, string $view, ?array $args=null, ?string $senderId=null, ?int $dnd=null):bool
+  {
+    $message = get_instance()->load->view($view, $args, true);
+    return $this->sendSMS($to, $message, $senderId, $dnd);
   }
 }
