@@ -10,8 +10,9 @@ class BulkSMSNigeria
   private const BASE_URL = "https://www.bulksmsnigeria.com/api/v1/sms/";
 
   /**
-   * [private description]
-   * @var [type]
+   * $apiKey API Key, otherwise known as API Token.
+   * obtain from https://www.bulksmsnigeria.com/app/api-settings
+   * @var string
    */
   private $apiKey;
 
