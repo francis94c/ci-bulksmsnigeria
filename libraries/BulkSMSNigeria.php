@@ -7,6 +7,12 @@ class BulkSMSNigeria
    * [private description]
    * @var [type]
    */
+  private const BASE_URL = "https://www.bulksmsnigeria.com/api/v1/sms/";
+
+  /**
+   * [private description]
+   * @var [type]
+   */
   private $apiKey;
 
   /**
@@ -51,6 +57,35 @@ class BulkSMSNigeria
 
     if (is_array($to)) $to = implode(',', $to);
 
-    
+    $ch = curl_init(self::BASE_URL . 'create');
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+
+    if (ENVIRONMENT === 'development') {
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    }
+
+    $header[] = 'Content-Type: application/x-www-form-urlencoded';
+    $body = [
+      'api_token' => $this->apiKey,
+      'from' => $senderId,
+      'to'=> $to,
+      'body' => $message,
+      'dnd' => $dnd
+    ];
+
+    $body = http_build_query($body);
+    $header[] = 'Content-Length: '.strlen($body);
+
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Skooleeo');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+
+    // Exec.
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return json_decode($response)->data->status == 'success';
   }
 }
