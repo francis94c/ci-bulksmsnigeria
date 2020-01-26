@@ -1,2 +1,3 @@
+[![Build Status](https://scrutinizer-ci.com/g/francis94c/ci-bulksmsnigeria/badges/build.png?b=master)](https://scrutinizer-ci.com/g/francis94c/ci-bulksmsnigeria/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/francis94c/ci-bulksmsnigeria/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/francis94c/ci-bulksmsnigeria/?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/bddf03d5192ed1047f5c/maintainability)](https://codeclimate.com/github/francis94c/ci-bulksmsnigeria/maintainability)
 # ci-bulksmsnigeria
 PHP Code Igniter API for https://www.bulksmsnigeria.com (Bulk SMS Nigeria) SMS GateWay.
