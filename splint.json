@@ -1,0 +1,21 @@
+{
+  "name": "francis94c/ci-bulksmsnigeria",
+  "type": "library",
+  "description": "PHP Code Igniter API for https://www.bulksmsnigeria.com (Bulk SMS Nigeria) SMS GateWay.",
+  "tags": [],
+  "page": "https://github.com/francis94c/ci-bulksmsnigeria",
+  "authors": [
+    {
+      "name": "Francis Ilechukwu",
+      "email": "francis94c@gmail.com",
+      "page": "about.me/francisilechukwu",
+      "role": "Developer"
+    }
+  ],
+  "php": ">=7.3",
+  "autoload": {
+    "libraries" : [
+      ["BulkSMSNigeria", "@sms", "sms"]
+    ]
+  }
+}
